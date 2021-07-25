@@ -35,7 +35,7 @@ namespace Book_Store
                             case 1:
                                 //displaying all books
                                 DisplayBooks();
-                                Console.WriteLine("Please enter Book ID to add to your Cart:");
+                                Console.WriteLine("Please enter Book ID to add to your Cart(with comma seperated e.g. 1,3 ):");
                                 string addtocart = Console.ReadLine();
 
 
@@ -127,12 +127,7 @@ namespace Book_Store
 
             SqlDataReader rdr,rdr2 = null;
             SqlCommand command,command2;
-            //SqlDataAdapter adapter = new SqlDataAdapter();
-
-            //Console.WriteLine("Please enter Book ID to add to your Cart:");
-            //int addtocart = int.Parse(Console.ReadLine());
-            //string sql = "";
-
+            
 
             // Displaying selected books
             string[] val;
@@ -191,14 +186,14 @@ namespace Book_Store
                     double totalCostWithGST = orderWithGST + deliveryFee;
 
                     // Printing total cost with and without GST
-                    Console.WriteLine(" The total cost of the order without GST is: $" + totalCostWithoutGST);
-                    Console.WriteLine(" The total cost of the order with applied GST is: $" + totalCostWithGST);
+                    Console.WriteLine(" The total cost of the order without GST is: $" + String.Format("{0:0.00}", totalCostWithoutGST));
+                    Console.WriteLine(" The total cost of the order with applied GST is: $" + String.Format("{0:0.00}",totalCostWithGST));
                 }
                 else // No delivery charges 
                 {
                     // Printing total cost with and without GST
-                    Console.WriteLine(" The total cost of the order without GST is: $" + orderWithoutGST);
-                    Console.WriteLine("The total cost of the order  with applied GST is: $" + orderWithGST);
+                    Console.WriteLine(" The total cost of the order without GST is: $" + String.Format("{0:0.00}", orderWithoutGST));
+                    Console.WriteLine("The total cost of the order  with applied GST is: $" + String.Format("{0:0.00}", orderWithGST));
                 }
                             
 
@@ -235,7 +230,7 @@ namespace Book_Store
             insertCommand.Parameters.Add(new SqlParameter("bookAuthor", author));
             insertCommand.Parameters.Add(new SqlParameter("bookGenre", genre));
             insertCommand.Parameters.Add(new SqlParameter("bookUnitPrice", price));
-            Console.WriteLine("Commands executed! Total rows affected are " + insertCommand.ExecuteNonQuery());
+            Console.WriteLine("Book Added successfully! Total rows affected are " + insertCommand.ExecuteNonQuery());
             Console.ReadLine();
             Console.Clear();
             // connection closed 
