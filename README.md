@@ -33,7 +33,7 @@ The following are the additional charges that would be applied to an order:
 To Clone:
 `git clone https://github.com/Gosaisnehal/Book-Store
 - Once cloned, you will need to modify connection string in the app.config to drirect the application to your database
-- You will also need to populate your database with seed data of your choice or you can add the data present below.\
+- You will also need to populate your database with seed data of your choice .
 
 
 
